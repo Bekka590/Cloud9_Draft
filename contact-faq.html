@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&display=swap" rel="stylesheet">
+  <title>Cloud9 Feline</title>
+  <link rel="stylesheet" href="styles2.css" />
+  <style>
+  :root {
+    --dot-color: #FFD3A4; /* light beige */
+    --dot-active-color: #FE6892; /* pink */
+  }
+</style>
+</head>
+<body>
+
+    
+    <div class="top-banner">
+      <a href="signup.html">
+        🎉 Click here to sign up and get 10% off your first order | 🚚 Free shipping on all orders over £40
+      </a>
+    </div>
+
+
+  <!-- Navigation -->
+
+<header class="navbar">
+  <div class="nav-container">
+    
+
+
+    <!-- Burger Menu Button -->
+    <button class="burger-menu" aria-label="Toggle Menu">☰</button>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="shop-supplements.html">Shop Supplements</a>
+      <a href="shop-toys-and-accessories.html">Shop Toys & Accessories</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact-faq.html">FAQ & Contact</a>
+    </nav>
+
+<!-- Logo -->
+    <a href="index.html" class="logo">
+      <img src="assets/pink-logo.svg" alt="Cloud9 Feline Logo" />
+    </a>
+
+    <!-- Basket -->
+    <button class="basket-btn">🛒 <span class="basket-text">Basket</span></button>
+  </div>
+</header>
+
+
+  <div class="wrapper">
+
+
+<main class="contact-faq-page">
+<section class="contact-faq">
+
+
+<img src="assets/contact-cat-left.png" alt="" class="contact-cat-deco" aria-hidden="true">
+
+<div class="Contact-heading">
+  <h2>We Want To Hear From You</h2>
+</div>
+
+  <!-- Contact CTA -->
+<div class="contact-faq-wrapper">
+  <button class="contact-envelope" id="openContact" aria-haspopup="dialog" aria-controls="contactModal">
+    <span class="envelope-cta">Whether you've got a success story to share, feedback on our products, or simply want to say hello — our inbox is always open.</span>
+
+    <img src="assets/envelope.png" alt="" class="envelope-img">
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="contact-modal-backdrop" id="contactBackdrop" hidden></div>
+
+<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-describedby="contactDesc" hidden>
+  <div class="contact-modal-inner" role="document">
+    <button class="contact-close" id="closeContact" aria-label="Close form">×</button>
+
+    <h2 id="contactTitle">Get in Touch</h2>
+
+    <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="file">Attach Images</label>
+        <input type="file" id="file" name="file" accept="image/*" multiple>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" placeholder="Tell us how we can help..." rows="4" required></textarea>
+      </div>
+        <p id="contactDesc" class="contact-desc">We usually reply within 1–2 working days.</p>
+
+      <div class="contact-form-buttons">
+        <button type="submit" class="wave-button success-btn">Send Message</button>
+        <button type="button" class="wave-button cancel-btn" id="cancelContact">Cancel</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+  </section>
+
+ <section class="FAQ-section">
+
+<div class="Contact-heading">
+<h2>FAQ</h2>
+</div>
+
+
+    <div class="expand-box2">
+    <div class="expand-header2">
+      <strong>Question 1</strong>
+      <span class="expand-icon2">▾</span>
+    </div>
+    <div class="expand-body2">
+      <p>Chicken Breast 70%, Chicken Broth, Tuna Fillet 5%, Rice, Sunflower Oil, Vitamin E, Taurine, Natural Flavouring.</p>
+    </div>
+  </div>
+
+  <div class="expand-box2">
+    <div class="expand-header2">
+      <strong>Question 1</strong>
+      <span class="expand-icon2">▾</span>
+    </div>
+    <div class="expand-body2">
+      <p>Chicken Breast 70%, Chicken Broth, Tuna Fillet 5%, Rice, Sunflower Oil, Vitamin E, Taurine, Natural Flavouring.</p>
+    </div>
+  </div>
+
+  <div class="expand-box2">
+    <div class="expand-header2">
+      <strong>Question 1</strong>
+      <span class="expand-icon2">▾</span>
+    </div>
+    <div class="expand-body2">
+      <p>Chicken Breast 70%, Chicken Broth, Tuna Fillet 5%, Rice, Sunflower Oil, Vitamin E, Taurine, Natural Flavouring.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="best-sellers">
+  <h2>Best Sellers</h2>
+  <div class="carousel-wrapper">
+    <button class="carousel-arrow left">&#10094;</button>
+    
+    <div class="carousel-track">
+      <div class="carousel-item"><img src="assets/cloud9-jar-vector.png" alt="Product 1"><p class="best-seller-label">Stress & Anxiety</p></div>
+      <div class="carousel-item"><img src="assets/cloud9-jar-vector1.png" alt="Product 2"><p class="best-seller-label">Joints & Mobility</p></div>
+      <div class="carousel-item"><img src="assets/cloud9-jar-vector2.png" alt="Product 3"><p class="best-seller-label">Probiotic Gut Health</p></div>
+      <div class="carousel-item"><img src="assets/cloud9-jar-vector3.png" alt="Product 4"><p class="best-seller-label">Skin & Coat</p></div>
+      <div class="carousel-item"><img src="assets/catniptoy.png" alt="Product 5"><p class="best-seller-label">Catnip Mouse</p></div>
+      <div class="carousel-item"><img src="assets/catwand.png" alt="Product 6"><p class="best-seller-label">Character Wand</p></div>
+      <div class="carousel-item"><img src="assets/catniptoyrabbit.png" alt="Product 7"><p class="best-seller-label">Catnip Rabbit</p></div>
+      <div class="carousel-item"><img src="assets/lickmat.png" alt="Product 8"><p class="best-seller-label">Steel Lickmat</p></div>
+    </div>
+    
+    <button class="carousel-arrow right">&#10095;</button>
+  </div>
+  
+</section>
+  
+
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-video" id="footerVideoWrap">
+      <video id="footerVid" muted playsinline preload="metadata">
+        <source src="assets/footer-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <nav class="footer-nav">
+      <div class="footer-dropdown">
+        <a href="#" class="footer-dropdown-toggle">Shop ▾</a>
+        <div class="footer-dropdown-menu">
+          <a href="shop-supplements.html">Shop Supplements</a>
+          <a href="shop-toys-and-accessories.html">Shop Toys & Accessories</a>
+        </div>
+      </div>
+
+      <a href="/blog.html">Blog</a>
+      <a href="/contact-faq.html">F&Q</a>
+      <a href="/contact-faq.html">Contact</a>
+    </nav>
+
+    <div class="footer-logo">
+      <img src="assets/logo.svg" alt="Cloud9 Feline Logo">
+    </div>
+
+    <div class="footer-copy">
+      Cloud 9 Feline @ Copyright - whatever
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Contact Section -->
+
+
+
+
+</main>
+
+  </div>
+
+  <!-- BURGER SCRIPT -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const burger = document.querySelector('.burger-menu');
+  const nav = document.querySelector('nav');
+
+  // Toggle menu on burger click
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation(); // ✅ prevent this click from triggering the document listener
+    nav.classList.toggle('active');
+    burger.classList.toggle('active');
+  });
+
+  // Close menu when clicking anywhere outside
+  document.addEventListener('click', (e) => {
+    // Check if the click is OUTSIDE both the nav and burger button
+    if (!nav.contains(e.target) && !burger.contains(e.target)) {
+      nav.classList.remove('active');
+      burger.classList.remove('active');
+    }
+  });
+});
+</script>
+
+<!-- FOOTER VIDEO -->
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const wrap = document.getElementById('footerVideoWrap');
+  const v = document.getElementById('footerVid');
+
+  // Tweaks
+  const START = 0.3;       // seconds to skip at start
+  const END_TRIM = 0.4;    // seconds to cut from end
+  const SPEED = 0.25;       // playback speed
+  const VISIBLE_THRESHOLD = 0.2; // only play when 20% visible
+
+  let raf;
+
+  function startLoop() {
+    const stopAt = Math.max(START, (v.duration || 0) - END_TRIM);
+    v.playbackRate = SPEED;
+    v.currentTime = START;
+    v.play().catch(() => {});
+
+    const tick = () => {
+      if (v.currentTime >= stopAt) {
+        v.currentTime = START;
+        v.play();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+  }
+
+  function stopLoop() {
+    cancelAnimationFrame(raf);
+    v.pause();
+  }
+
+  const io = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      if (v.readyState >= 1) {
+        startLoop();
+      } else {
+        v.addEventListener('loadedmetadata', startLoop, { once: true });
+      }
+    } else {
+      stopLoop();
+    }
+  }, { threshold: VISIBLE_THRESHOLD });
+
+  if (v.readyState >= 1) {
+    io.observe(wrap);
+  } else {
+    v.addEventListener('loadedmetadata', () => io.observe(wrap), { once: true });
+  }
+});
+</script>
+
+
+<!-- FOOTER DROPDOWN -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".footer-dropdown-toggle");
+  const menu = document.querySelector(".footer-dropdown-menu");
+
+  // Toggle dropdown when clicking on "Shop"
+  toggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    menu.classList.toggle("active");
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".footer-dropdown")) {
+      menu.classList.remove("active");
+    }
+  });
+});
+</script>
+
+
+
+
+<script>
+  document.querySelectorAll('.share-btn2').forEach(btn => {
+    btn.addEventListener('click', () => {
+      console.log('Product shared');
+      alert('Thanks for sharing!');
+    });
+  });
+</script>
+
+<script>
+  document.querySelectorAll('.expand-box2').forEach(box => {
+  box.addEventListener('click', () => {
+    box.classList.toggle('open');
+  });
+});
+
+</script>
+
+
+
+<!--MODAL-->
+
+<script>
+(() => {
+  const openBtn   = document.getElementById('openContact');
+  const modal     = document.getElementById('contactModal');
+  const backdrop  = document.getElementById('contactBackdrop');
+  const closeBtn  = document.getElementById('closeContact');
+  const cancelBtn = document.getElementById('cancelContact');
+  const form      = document.getElementById('contactForm');
+
+  if (!openBtn || !modal || !backdrop) return;
+
+  let lastFocus = null;
+
+  function getFocusable(root){
+    return [...root.querySelectorAll(
+      'a[href], area[href], button:not([disabled]), input:not([disabled]), ' +
+      'select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )].filter(el => el.offsetParent !== null || el === document.activeElement);
+  }
+
+  function trapFocus(e){
+    if (e.key !== 'Tab') return;
+    const f = getFocusable(modal);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+
+    if (e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
+    else if (!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
+  }
+
+  function openModal(){
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    backdrop.hidden = false;
+    document.body.classList.add('modal-open'); // prevent page scroll
+    const f = getFocusable(modal);
+    (f[0] || closeBtn).focus();
+    document.addEventListener('keydown', onKeyDown);
+    modal.addEventListener('keydown', trapFocus);
+  }
+
+  function closeModal(){
+    modal.hidden = true;
+    backdrop.hidden = true;
+    document.body.classList.remove('modal-open');
+    document.removeEventListener('keydown', onKeyDown);
+    modal.removeEventListener('keydown', trapFocus);
+    if (lastFocus) lastFocus.focus();
+  }
+
+  function onKeyDown(e){
+    if (e.key === 'Escape') closeModal();
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn?.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  // Example submit handler (replace with your real logic)
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // TODO: send message
+    alert('Thank you! We\'ll be in touch.');
+    closeModal();
+  });
+})();
+</script>
+
+
+</body>
+
+
+
+</html>
