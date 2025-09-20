@@ -5117,6 +5117,24 @@ body.productpage2 html.main-page {
   border-radius: 999px;
 }
 
+/* Make the whole sentence (commas, ellipsis, !) pink by default */
+.collect-teaser .collect-line {
+  color: var(--c9-pink);
+}
+
+/* Keep existing link colors & hover */
+.collect-teaser a {
+  color: var(--c9-pink);
+}
+.collect-teaser a:hover {
+  color: var(--c9-purple);
+}
+
+/* Override just the leading label to navy */
+.collect-teaser .collect-label {
+  color: var(--c9-navy);
+}
+
 /* Desktop layout */
 @media (min-width: 980px) {
   .c9toy-hero__inner { grid-template-columns: 1.15fr .85fr; gap: 2rem; }
@@ -5285,36 +5303,66 @@ body.productpage2 html.main-page {
 .hero-inner{
   position: relative;
   z-index: 1;                     /* above the decorative bar */
-  grid-row: 1 / -1;
   display: grid;
-  grid-template-rows: auto 1fr;
-  row-gap: clamp(0.75rem, 2.2vw, 1.5rem);
+  grid-template-columns: minmax(420px, 1fr) minmax(480px, 1fr); /* left | right */
+  grid-template-rows: auto 1fr;  /* header row, then content row */
+  row-gap: clamp(12px, 2vw, 24px); /* controls spacing between header and buttons */
   align-content: start;
   min-height: 0;
   padding-bottom: var(--heroBarH); /* reserve space for the pink strip */
+  min-height: calc(100svh - var(--header-height));
+  box-sizing: border-box;
 }
+
+
+/* Desktop tighten-up: bring the cat closer to the copy */
+@media (min-width: 981px){
+  /* 1) Reduce the space between the columns */
+  .hero-inner{
+    /* was something like clamp(24px, 4vw, 64px) */
+    column-gap: clamp(12px, 2.2vw, 36px);
+    /* 2) Bias width toward the right column a touch so the cat’s left edge moves left */
+  }
+
+  /* 3) Seat the cat on the LEFT of its column (next to the gap) */
+  .hero-cat{
+    justify-self: start;       /* was end */
+    /* optional micro-nudge if you want it even closer */
+    transform: translateX(-1.5vw);
+  }
+}
+
+.header-hero {
+  margin: 60px 80px 0px 60px; 
+}
+
+/* ── Heading: now left-aligned on desktop/tablet ─────────────── */
 .hero-inner h1 {
   margin-top: 0;
-  color: var(--c9-pink); /* optional, use white text for contrast on pink */
-  font-size: clamp(3rem, 6vw, 4rem);
+  color: var(--c9-navy);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 800;
   line-height: 1; /* 100% */
   letter-spacing: -2.8px;
-  text-align: center;
-  margin: 0 auto;
-  text-shadow: 1px 1px 0 var(--c9-cream), 
-  2px 2px 3px rgba(0, 0, 0, 0.5);
+  text-align: left;      /* was center */
+  margin-bottom: 20px;
 }
 
 .head-subtext {
-  text-align: center;
-  max-width: 60%;
-
+  text-align: left;      /* was center */
+  max-width: 82%;
 }
+
+@media (max-width: 1552px){
+  .head-subtext {
+  max-width: 100%;
+}
+}
+
 
 /* the pink bar is always visible */
 .hero-bottom-bar {
-    grid-row: 3;                 /* ✅ Always stays in third grid row */
+  grid-row: 3;                 /* ✅ Always stays in third grid row */
   background: #ff608a;
   height: var(--heroBarH);
   width: 100%;
@@ -5324,306 +5372,361 @@ body.productpage2 html.main-page {
   position: relative; 
 }
 
-
 /* Subtext spacing tidy */
 .head-subtext{
-  margin: .8rem auto 0;
-  padding-inline: clamp(1rem, 6vw, 200px);
+  margin: .8rem 0 0;           /* was auto-centered; now left */
+  padding-inline: 0;           /* remove big side padding when left-aligned */
   line-height: 1.4;
-  font-size: clamp(.95rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.1rem, 1.4vw, 1.25rem);
   color: var(--c9-navy);
 }
 
 /* VISUALS: 2 columns, both bottoms aligned */
 .hero-visuals{
-  display: grid;
+  display: contents;
   grid-template-columns: 1fr 1fr;
   align-items: end;                   /* baseline bottoms */
   gap: clamp(1rem, 3vw, 2rem);
   min-height: 0;                      /* allow it to shrink to fit */
 }
 
-/* CAT: sits on baseline; scales but never overflows */
-.hero-cat{ align-self: end; }
+/* CAT: sits on baseline; now on the RIGHT; pulled inward & can be larger */
+.hero-cat{
+  align-self: end;
+  order: 2;                 /* right column */
+  justify-self: end;        /* hug the right edge of its column */
+  margin-right: clamp(24px, 5vw, 120px); /* pull inward from far-right */
+}
 .hero-cat img{
   width: 100%;
   height: auto;
-  max-height: clamp(280px, 45vh, 520px);
+  max-height: clamp(400px, 69vh, 920px);
   object-fit: contain;
   display: block;
   transform: translateY(clamp(45px, 3vw, 20px));
+  margin-right: 400px;
 }
 
-@media (min-width: 1210px) {
-  .hero-cat img {
-    transform: translateY(25px);
-  }
+@media (min-width: 950px) {
+  .hero-cat img { transform: translateY(25px); }
 }
 
-/* PRODUCTS: stuck to right, two tiles share the column height */
+/* PRODUCTS: on the LEFT; more left margin; will become “chip buttons” */
 .hero-products{
   align-self: end;
-  justify-self: end;                  /* stick to the right edge of its column */
-  width: 80%;                        /* fill the column width */
+  order: 1;                 /* left column */
+  justify-self: start;      /* hug the left edge of its column */
+  width: 80%;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;     /* top + bottom touch column edges */
-  gap: 2rem;
-  height: clamp(260px, 42vh, 420px);  /* ensures everything fits above the bar */
+  justify-content: space-between;
+  gap: 1rem;                /* tighter gap for chip look */
+  height: auto;             /* chips don’t need fixed column height */
   min-height: 0;
-  margin-bottom: 5px;
+  margin-bottom: 100px;
   margin-top: 5px;
-  padding-bottom: 20px;
-  margin-right: 20px;
-}
 
-.hero-product img{
-  width: 100%;
-  height: 90%;
-  object-fit: contain;
-}
+  /* more left margin per request */
+  margin-left: clamp(28px, 4vw, 56px);
+  margin-right: 0;
 
-/* TILE: slide in from right, one after another */
-.hero-product {
+  padding-bottom: 10px;
+}
+/* --- HERO BUTTONS: pill buttons with wave effect, keeping the image --- */
+
+/* reset any old “card” look on hero buttons */
+.hero-product{
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
   position: relative;
-  flex: 1 1 0;
-  min-height: 0;
-  border-radius: .5rem;
-  background: radial-gradient(circle,
-    var(--c9-blue) 10%, 
-    var(--c9-blue) 16%, 
-    var(--c9-cream) 80%, 
-    var(--c9-cream) 100%);
-  border: 1.6px solid #00030F;
-  box-shadow: -4px 4px 10px #ff4c8b66;
-  opacity: .95;
-  transform: translateX(var(--tile-start));
-  will-change: transform;
-  padding: 10px;
   overflow: hidden;
-  transition: transform .25s ease, box-shadow .25s ease;
+  cursor: pointer;
+  text-decoration: none;
+  /* pill shape + brand styling (matches .wave-button) */
+  background: #FE6892;                 /* pink base */
+  color: #fff;
+  border: 2px solid #2F3655;           /* navy border */
+  border-radius: 999px;
+  padding: 0.95em 1.6em 0.95em 1.2em;  /* a bit more left padding for image */
+  box-shadow: 0 14px 32px rgba(254, 104, 146, .28);
+  transform: translateZ(0);            /* promote to its own layer */
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  /* layout control if these are full-width in your column */
+  width: min(720px, 92%);
 }
 
-/* Add background image layer like .shop-card */
-.hero-product::before {
+/* keep your image, but present it like an icon */
+.hero-product > img{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  flex: 0 0 auto;
+  transition: transform .2s ease, opacity .2s ease;
+  z-index: 5;
+}
+
+/* label uses your existing element; inherit color from button */
+.main-hero-product-label{
+  margin: 0;
+  color: currentColor;
+  font-weight: 800;
+  /* slightly larger than body, scales on big screens */
+  font-size: clamp(1rem, 1.05rem + .25vw, 1.22rem);
+  letter-spacing: .01em;
+  z-index: 5;
+}
+
+/* liquid wave layer (same concept as .wave-button) */
+.hero-product::before{
   content: "";
   position: absolute;
-  inset: 10px;
-  background-image: var(--bg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1;
-  opacity: .95;
-  transition: transform .3s ease, opacity .3s ease;
+  bottom: -100%;
+  left: -10%;
+  width: 220%;
+  height: 460%;
+  background: #FE6892; /* base so the SVG blend looks natural */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' preserveAspectRatio='none'><path d='M0 50 Q50 0 100 50 T200 50 V100 H0 Z' fill='%23B3ADFF'/></svg>");
+  background-repeat: repeat-x;
+  background-size: 50% 100%;
+  z-index: 0;
+  transform: translateY(100%);
+  transition: bottom .8s ease, transform 2s ease;
+  justify-content: flex-start;   /* ⬅ instead of centering the row content */
+  text-align: left;
 }
 
-/* Label stays on top */
-.hero-product p {
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  margin-left: 10px;
-  margin-bottom: 6px;
-  padding: 0;
-  color: var(--c9-navy);
-  font-weight: bold;
-  font-size: clamp(.75rem, 1.7vw, 1rem);
+/* hover/tap states */
+.hero-product:hover,
+.hero-product:active{
+  transform: translateY(-1px) scale(1.015);
+  box-shadow: 0 18px 40px rgba(254, 104, 146, .34);
 }
 
-/* Hover matches .shop-card perfectly */
-.hero-product:hover {
-  transform: translateY(-4px);
-  box-shadow: -6px 6px var(--c9-fakepink);
-  opacity: 1;
+.hero-product:hover::before,
+.hero-product:active::before{
+  bottom: 0;
+  transform: translateY(0);
+  animation: heroWave 2s infinite linear;
 }
 
-.hero-product:hover img {
-  transform: scale(1.05);
-  opacity: 1;
+/* subtle icon lift on hover */
+.hero-product:hover > img{ transform: translateY(-1px) scale(1.03); }
+
+/* focus accessibility */
+.hero-product:focus-visible{
+  outline: 3px solid #2F3655;
+  outline-offset: 2px;
 }
 
-
-.main-hero-product-label {
-  padding: 0px 0px 0px 20px;
-  color: var(--c9-navy);
-  font-weight: bold;
-  font-size: clamp(.75rem, 1.7vw, 1rem);
-  margin-bottom: 20px;
-}
-
-
-/*Hero products animation*/
-.hero-products { overflow: visible; }
-
-.hero-product:nth-child(2){ animation-delay: .18s; }
-
-.hero-products.in .hero-product{
-  animation: tileSlideIn var(--tile-dur) var(--tile-ease) forwards;
-}
-.hero-products.in .hero-product:nth-child(1){
-  animation-delay: var(--tile-delay);
-}
-.hero-products.in .hero-product:nth-child(2){
-  animation-delay: calc(var(--tile-delay) + var(--tile-stagger));
-}
-
-/* smooth slide with a subtle overshoot */
-@keyframes tileSlideIn{
-  0%   { transform: translateX(var(--tile-start)); }
-  66%  { transform: translateX(var(--tile-overshoot)); }
-  100% { transform: translateX(0); }
-}
-
-/* accessibility */
-@media (prefers-reduced-motion: reduce){
-  .hero-product{ transform:none !important; animation:none !important; }
+/* wave scroll animation (same as your wave-button keyframes) */
+@keyframes heroWave{
+  0%   { background-position-x: 0; }
+  100% { background-position-x: 50%; }
 }
 
 
-@media (max-width: 1200px) {
 
-  .head-subtext {
-  max-width: 85%;
+/* =========================
+hero button colours
+   ========================= */
 
+/* === PRIMARY (NAVY) — white text, pink wave === */
+.hero-product.is-primary{
+  background:#2F3655;           /* navy base */
+  color:#ffffff;
+  border-color:#2F3655;
+  box-shadow:0 14px 32px rgba(47,54,85,.26);
 }
-}
-
-
-/* Phones: keep two columns, but bias to products (60/40) */
-@media (max-width: 540px) {
-  /* Keep two columns – give more room to products */
-  .hero-visuals{
-    grid-template-columns: 0.4fr 0.6fr;   /* cat 40% | products 60% */
-    gap: 0.75rem;
-    align-items: end; 
-    margin-top: 0;                     /* removes the gap above the bar */
-  }
-
-    .head-subtext {
-  max-width: 100%;
-
+.hero-product.is-primary::before{
+  background:#2F3655; /* base beneath wave */
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' preserveAspectRatio='none'><path d='M0 50 Q50 0 100 50 T200 50 V100 H0 Z' fill='%23FE6892'/></svg>");
 }
 
-  /* Slightly smaller cat so right column breathes */
- .hero-cat img {
-    max-height: 34vh;
-    transform: translateY(0px); /* push it down slightly */
-    margin: 0;
-    position: relative;
-    z-index: 10;               /* above the pink bar */
+
+/* === SECONDARY (CREAM) — navy text, purple wave === */
+.hero-product.is-secondary{
+  background:#F7E5D6;           /* cream base */
+  color:#2F3655;
+  border-color:#2F3655;
+  box-shadow:0 14px 32px rgba(47,54,85,.12);
+}
+.hero-product.is-secondary::before{
+  background:#F7E5D6; /* base beneath wave */
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' preserveAspectRatio='none'><path d='M0 50 Q50 0 100 50 T200 50 V100 H0 Z' fill='%23B3ADFF'/></svg>");
 }
 
-  /* Right column: two compact rows (small cards) */
+
+
+
+/* container that holds both buttons (tidy vertical rhythm) */
+.hero-products{
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 14px;                  /* spacing between the two buttons */
+  width: min(720px, 92%);     /* same width rule as the button itself */
+}
+
+/* ── Responsive tweaks ───────────────────────────────────────── */
+
+@media (max-width: 980px){
   .hero-products{
-    justify-self: end;
-    width: 90%;                            /* WIDTH CHANGED: use full right column */
-    margin: 0;                              /* remove any right/bottom margins */
-    padding: 0;
-    display: grid;
-    grid-template-rows: 120px 120px;        /* FIXED COMPACT CARD HEIGHTS */
-    gap: 20px;
-    height: auto;                           /* let grid define total height */
-    min-height: 0;
-    padding-bottom: 20px !important;
+    width: min(640px, 92%);
+    justify-items: center;       /* center the pill itself */
+    transform: translatey(0px);
   }
-
-  /* Card: tight padding, tidy shadow */
   .hero-product{
-    display: grid;
-    grid-template-rows: 1fr auto;           /* image area + label */
-    padding: 6px;                           /* PADDING REDUCED */
-    border-radius: .5rem;
-    overflow: hidden;                        /* crop inside card */
-    box-shadow: -8px 6px hwb(343 88% 1%);   /* smaller shadow for small cards */
-    margin: 0;
-  }
-
-  /* Image: fill available space and crop */
-  .hero-product img{
     width: 100%;
-    height: 100%;
-    object-fit: cover;                       /* CROPS instead of shrinking */
-    object-position: center;
-    display: block;
+    justify-content: flex-start; /* ⬅ content stays left inside */
   }
+}
 
-  /* Label: centered, single line, no extra padding */
+/*DIFFERENT CAT IMAGE ON MEDIUM SCREEN*/
+/* Default (desktop + small mobile) */
+.hero-cat img {
+  content: url("assets/cat-toy-play.png");
+}
+
+/* Between 680px and 980px → swap image */
+@media (min-width: 680px) and (max-width: 980px) {
+  .hero-cat img {
+    content: url("assets/catwand.png"); /* replace with your tablet image */
+  }
+}
+
+
+@media (max-width: 540px){
+  .hero-product{ padding: .5em 0.2em; }
+  .hero-product > img{ width: 44px; height: 44px; }
   .main-hero-product-label{
-    margin-top: 6px;
-    padding: 0;                              /* PADDING REMOVED */
-    font-size: clamp(.75rem, 3.2vw, .9rem);
-    line-height: 1.15;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0;
-    white-space: nowrap;                     /* keep it compact */
-    overflow: hidden;
-    text-overflow: ellipsis;                 /* … if it runs long */
+    font-size: clamp(0.7rem, 3vw, 1.05rem);
+  }
+}
+
+
+
+/* ── Tablet + Mobile: buttons ABOVE the cat (single column) ─────────── */
+/* Buttons above the cat on tablet/phone */
+@media (max-width: 980px){
+
+  /* collapse the two-column grid to one column */
+  .hero-visuals{
+    grid-template-columns: 1fr;     /* stack */
+    gap: 12px;
+    align-items: start;
   }
 
-  .hero-products, .hero-product, .hero-cat img{
-    margin-bottom: 0; 
-    padding-bottom: 0;
+  .header-hero {
+    margin: 35px 0px;
   }
 
+  .hero-inner h1{
+    margin: 0px 30px;
+  }
+
+  /* put buttons before the cat */
+  .hero-products{
+    order: 1;                        /* ⬅ buttons first */
+    justify-self: center;            /* centered on the page */
+    width: min(640px, 92%);          /* don’t hug the left edge */
+    margin: 0 auto 10px;             /* small gap under header */
+    display: grid;                   /* chips stack nicely */
+    grid-auto-rows: auto;
+    gap: 12px;
+    justify-content:center;
+  }
+
+  .hero-product{
+    width: 100%;
+    padding: 8px 23px;
+  }
+
+  .hero-cat{
+    order: 2;                        /* ⬅ cat after buttons */
+    justify-self: center;            /* cat centered */
+    margin-right: 0;                 /* drop desktop pull-in */
+  }
+
+  .hero-cat img{
+    max-height: 33vh;                /* keep it from pushing the pink bar */
+    transform: translateY(0);
+  }
+
+
+  /* center headline/subtext on smaller screens */
+  .hero-inner h1{ text-align: center; }
+  .head-subtext{ 
+    text-align: center; 
+    margin: .8rem auto 0; 
+    max-width: 83%;
+    font-size: clamp(0.91rem, 1.1vw, 1.25rem) 
+  }
+}
+
+.header-hero   { grid-column: 1; grid-row: 1; } /* header left, row 1 */
+.hero-products { grid-column: 1; grid-row: 2; align-self: end; } /* buttons left, below header */
+.hero-cat      { grid-column: 2; grid-row: 1 / span 2; align-self: end; justify-self: end; } /* cat right */
+
+@media (max-width: 980px){
   .hero-inner{
-    display:flex;
-    flex-direction:column;
-    margin-top:auto;                                /* push block down */
-    min-height: calc(100dvh - var(--header-height) - var(--heroBarH)); /* EXPLICIT height */
-    justify-content: flex-end;                      /* <— pack children at bottom */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto; /* header, buttons, cat */
+  }
+  .header-hero   { grid-column: 1; grid-row: 1; }
+  .hero-products { grid-column: 1; grid-row: 2; justify-self: center; width: min(640px, 92%); }
+  .hero-cat      { grid-column: 1; grid-row: 3; justify-self: center; }
+}
+
+/* Phones: tidy sizes */
+@media (max-width: 540px) {
+  .hero-cat img {
+    max-height: 34vh;
+  }
+  .hero-inner{
+    margin-top:auto;
+    min-height: calc(100dvh - var(--header-height) - var(--heroBarH));
+    justify-content: flex-end;
   }
 
-  /* Full-bleed bottom bar and no gap above it */
-/* Full-bleed bottom bar: always visible and fixed on mobile */
-.hero-bottom-bar {
-    position: relative !important;  /* ⬅ Force it to behave like part of grid */
+  .hero-bottom-bar {
+    position: relative !important;
     bottom: auto !important;
     left: auto !important;
     margin: 0 !important;
   }
 
-
-/* Ensure content doesn't get hidden under the bar */
-.main-hero {
+  .main-hero {
     display: flex;
     flex-direction: column;
     min-height: calc(100dvh - var(--header-height));
-}
-
-  
+  }
 
   .header-hero {
-    flex: 1; /* take up all remaining space in the flex parent */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* vertical center */
-    align-items: center;     /* horizontal center */
-    text-align: center;      /* optional: center the text inside */
-    margin: 0;               /* remove auto margin pushing it away */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
   }
- 
+  .hero-product {
+    max-width: 80%;
+  }
 }
 
 @media (max-height: 700px) and (max-width: 540px) {
-  .hero-cat img {
-    max-height: 30vh; /* slightly smaller cat */
-    
-  }
-  .hero-products {
-    grid-template-rows: 100px 100px; /* slightly smaller product cards */
-  }
-  .hero-inner h1 {
-    font-size: clamp(2.2rem, 6vw, 3.2rem); /* smaller heading */
-  }
+  .hero-cat img { max-height: 30vh; }
+  .hero-inner h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); }
 }
 
-
-
-
+@media (max-width: 900px){
+  .header-hero{
+  margin: 55px 0px 20px 0px;
+}
+}
 
 /*ABOUT US*/
 :root {
