@@ -151,6 +151,20 @@ html, body {
 }
 
 
+.wave-separator3 {
+  transform: translateY(20px);
+  position: relative;
+  width: 100%;
+  line-height: 0; /* Removes stray gaps */
+  overflow: hidden;
+}
+
+.wave-separator3 svg {
+  display: block;
+  width: 100%;
+  height: 120px; /* Adjust for how tall you want the visible wave */
+}
+
 /*BOTTOM WAVE*/
 .wave-separator-bottom {
   position: relative;
@@ -1763,6 +1777,11 @@ button.shop:hover {
   text-align: center; /* Center align everything inside */
 }
 
+.toys-header {
+    background: linear-gradient(to bottom, var(--c9-cream) 30%, var(--c9-purple) 100%);
+
+}
+
 .shop-heading-wrapper {
   display: flex;
   flex-direction: column; /* Stack heading above image */
@@ -1771,7 +1790,7 @@ button.shop:hover {
 }
 
 .shop-heading {
-  color: var(--c9-fakepink); /* optional, use white text for contrast on pink */
+  color: var(--c9-navy); /* optional, use white text for contrast on pink */
   font-size: clamp(3rem, 6vw, 4rem);
   font-weight: 800;
   line-height: 1; /* 100% */
@@ -1779,6 +1798,12 @@ button.shop:hover {
   text-align: center;
   margin: 0 auto;
 
+}
+
+.shop-subheading {
+  color: var(--c9-navy);
+  font-weight: bold;
+  max-width: 80%;
 }
 
 .shop-heading-cat {
@@ -2493,8 +2518,6 @@ button.shop:hover {
 }
 
 .tab-border-wrapper {
-  border-left: 4px solid var(--c9-pink);
-
   padding: 0;
   display: block;      /* ✅ Full-width container */
   width: 100%;         /* ✅ Matches the above section's width */
@@ -2510,13 +2533,11 @@ button.shop:hover {
 
 /* LEFT TABS: sticky and flush to page edge */
 .vertical-tabs {
-  position: sticky;
   top: 120px;
   width: 220px;
   display: flex;
   flex-direction: column;
   align-self: stretch; /* Force full stretch in flex container */
-  border-right: 4px solid var(--c9-purple);
 }
 
 /* Buttons */
@@ -2530,7 +2551,6 @@ button.shop:hover {
   color: var(--c9-navy);
   cursor: pointer;
   transition: background 0.2s;
-  width: 100%;
   margin-bottom: 20px;
 }
 
@@ -2553,7 +2573,6 @@ button.shop:hover {
   display: none;
 
   padding-right: 1rem;
-  padding-bottom: 4rem; /* NEW: Extra space at bottom inside scroll */
 
 }
 
@@ -2600,13 +2619,12 @@ button.shop:hover {
 
 .feeding-header h2{
   color: var(--c9-cream);
-  font-size: clamp(1.9rem, 3.2vw, 3.6rem);
+  font-size: clamp(1.9rem, 4.2vw, 4.5rem);
   font-weight: 800;
   line-height: 1;
   letter-spacing: -2.8px;
   text-align: center;
-  margin: 0px auto 18px;
-  text-decoration: underline;
+  margin: 35px auto 18px;
 }
 
 .feeding-header p {
@@ -2635,9 +2653,10 @@ button.shop:hover {
 }
 
 .intro-text {
-  font-size: 1.3rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
   color: var(--c9-navy);
   text-align: center;
+  padding: 0% 3%;
 }
 
 .tab-subtext {
@@ -2816,12 +2835,13 @@ button.shop:hover {
 /* Success Story Styling */
 .success-stories {
   background: var(--c9-pink);
-  padding: 3rem 2rem 2rem;
+  padding: 3rem 9rem 2rem;
   position: relative;
   margin: 0;
   width: 100%;          /* Ensure full width like the above section */
   box-sizing: border-box;
   color: var(--c9-cream);
+
 }
 
 .success-content {
@@ -3059,49 +3079,91 @@ button.shop:hover {
 
 
 
-
-
-/*ARTICLES PAGE*/
-/* Blog & Success Cards */
+/* ================================
+   Blog & Success Stories Section
+================================= */
 
 #blog-section {
-  padding: 0px;
-
+  padding: 0;
 }
 
+.blue-header {
+  background: linear-gradient(to bottom, var(--c9-cream) 30%, var(--c9-blue) 100%);
+}
+
+/* Container: Scrollable list */
 .blog-list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 1.5rem;
+  max-height: 50vh;
+  overflow-y: auto;
+  padding: 20px 10px;
+
+  /* Scrollbar styling */
+  scrollbar-width: thin;  
+  scrollbar-color: var(--c9-pink) #fde8f0;
 }
 
-.blog-card {
-  display: flex;
-  gap: 1rem;
+.blog-list::-webkit-scrollbar {
+  width: 10px;
+}
+.blog-list::-webkit-scrollbar-track {
+  background: #fde8f0;
+  border-radius: 999px;
+}
+.blog-list::-webkit-scrollbar-thumb {
+  background: var(--c9-pink);
+  border-radius: 999px;
+  border: 2px solid #fde8f0;
+}
+.blog-list::-webkit-scrollbar-thumb:hover {
+  background: #ff4f87;
+}
+
+/* ================================
+   Base Blog Cards
+================================= */
+.blog-card,
+.story-card {
   background: #fff;
   border: 2px solid var(--c9-pink);
   border-radius: 12px;
   padding: 1rem;
-  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover,
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+.blog-card {
+  display: flex;           /* restore side-by-side layout */
+  align-items: center;     /* vertically center image + text */
+  gap: 1rem;               /* spacing between image and text */
+  background: #fff;
+  border: 2px solid var(--c9-pink);
+  border-radius: 12px;
+  padding: 1rem;
   transition: transform 0.2s ease;
   cursor: pointer;
 }
 
-.blog-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
 
-.blog-thumb {
+.blog-thumb,
+.story-thumb {
+  flex-shrink: 0;
   width: 120px;
   height: 120px;
-  border-radius: 12px;
   object-fit: cover;
+  border-radius: 12px;
   border: 3px solid var(--c9-purple);
 }
 
-.blog-info h3 {
+.blog-info h3,
+.story-info h3 {
   margin: 0 0 0.3rem;
   font-size: 1.2rem;
   color: var(--c9-pink);
@@ -3111,14 +3173,128 @@ button.shop:hover {
   text-decoration: none;
   color: inherit;
 }
-
 .blog-info h3 a:hover {
   text-decoration: underline;
 }
 
-.blog-info p {
+.blog-info p,
+.story-info p {
   margin: 0;
   font-size: 1rem;
+  color: var(--c9-navy);
+}
+
+/* ================================
+   Story Card Layout
+================================= */
+.story-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.story-info {
+  flex: 1;
+}
+
+/* Expanded hidden text */
+.story-expanded {
+  display: none;              /* hidden by default */
+  margin-top: 1rem;
+  background: #fff5f8;
+  border: 2px solid var(--c9-pink);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  animation: fadeIn 0.4s ease;
+}
+
+.story-expanded-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.story-jar img {
+  max-width: 120px;
+  height: auto;
+  display: block;
+}
+
+.story-details {
+  flex: 1;
+  color: var(--c9-navy);
+}
+
+.story-details blockquote {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--c9-pink);
+  margin: 0 0 1rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--c9-pink);
+}
+
+.story-details p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.story-cta {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--c9-pink);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 40px;
+  box-shadow: 3px 3px 0 var(--c9-navy);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.story-cta:hover {
+  transform: scale(1.05);
+}
+
+/* Show expanded content when active */
+.story-card.active .story-expanded {
+  display: block;
+}
+
+
+
+/* Responsive fix for expanded story cards */
+@media (max-width: 600px) {
+  .story-expanded-inner {
+    flex-direction: column-reverse;  /* ✅ text first, image underneath */
+    align-items: center;
+    text-align: center;
+  }
+
+  .story-jar img {
+    max-width: 120px;   /* ✅ a bit larger on mobile for visibility */
+    margin-top: 1rem;
+  }
+
+  .story-details blockquote,
+  .story-details p {
+    text-align: left;   /* keep text readable */
+  }
+}
+
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+#blog.best-sellers {
+  background: linear-gradient( to bottom, var(--c9-pink) 0%, var(--c9-cream) 25%, var(--c9-cream) 75%, var(--c9-cream) 100%);
+}
+
+#blog.best-sellers h2 {
+  margin-top: 25px;
   color: var(--c9-navy);
 }
 
@@ -3182,17 +3358,76 @@ button.shop:hover {
 }
 
 /* Layout container: full width split */
+/* Layout container: stack tabs on top of content */
 #blog-section .tabs-layout {
   display: flex;
+  flex-direction: column;   /* ⬅️ stack nav above content */
   width: 100%;
   clip-path: none;
-  border-radius: none;
+  border-radius: 0;
 }
+
+/* Tabs bar: horizontal row instead of vertical list */
+
+#blog-section .vertical-tabs {
+  display: flex;
+  flex-direction: row;    /* ✅ enforce side by side */
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  width: auto;            /* ✅ no forced 100% that can break it */
+}
+
+
+#blog-section .tab-btn {
+  display: inline-flex;       /* ✅ keeps text centered, prevents stretching */
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.6rem;
+  border: 2px solid var(--c9-navy);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  background: transparent;
+  color: var(--c9-navy);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+
+#blog-section .tab-btn.active {
+  background: var(--c9-pink);
+  border-color: var(--c9-pink);
+  color: #fff;
+}
+
+/* Mobile tweak */
+@media (max-width: 600px) {
+  #blog-section .vertical-tabs {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  #blog-section .tab-btn {
+    flex: 1;                  /* Equal width */
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+
+
+
 
 #blog-section .tab-content h2 {
   margin: 2.5rem 0rem;
   font-size: clamp(3rem, 3vw, 3.6rem);
   text-align: center;
+  padding: 0% 3%;
 }
 
 /*featured story*/
@@ -3737,15 +3972,17 @@ text-align: center;
 }
 
 .Contact-heading {
-  color: var(--c9-fakepink); /* optional, use white text for contrast on pink */
+  color: var(--c9-navy);
   font-size: clamp(2rem, 2.4vw, 3rem);
   font-weight: 800;
   line-height: 1; /* 100% */
   letter-spacing: -2.8px;
   text-align: center;
   margin: 0 auto;
-  text-shadow: 1px 1px 0 var(--c9-cream), 
-  2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+#FAQ.Contact-heading {
+  margin-top: 40px;
 }
 
 .contact-envelope {
@@ -3762,9 +3999,9 @@ text-align: center;
 .contact-envelope:hover{ transform: translateY(-2px); }
 
 
-.envelope-img {
-  width: 120px;   /* bigger size */
-  height: 120px;
+.cat-mail {
+  width: 140px;   /* bigger size */
+  height: 140px;
   object-fit: contain;
   animation: floatY 3s ease-in-out infinite;
   margin-bottom: 30px ;
@@ -4481,6 +4718,211 @@ body.productpage2 html.main-page {
 }
 
 
+/*WHY CLOUD9*/
+
+
+/* === WHY CLOUD9 SECTION === */
+.whyC9-section {
+  background: linear-gradient(to bottom, var(--c9-pink), var(--c9-pink), var(--c9-cream));
+  padding: 2rem 1rem 3rem;
+  text-align: center;
+}
+
+.whyC9-title {
+  font-size: clamp(1.8rem, 6vw, 3.2rem);
+  font-weight: 800;
+  color: var(--c9-cream);
+  margin-bottom: 4rem;
+  
+}
+
+/* === FEATURES === */
+.whyC9-features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.whyC9-feature {
+  max-width: 280px;
+  flex: 1 1 250px;
+}
+
+.whyC9-icon {
+  background: var(--c9-cream);
+  border-radius: 50%;
+  width: 120px;   /* slightly bigger base */
+  height: 120px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 var(--c9-navy);
+  position: relative; /* allows child to overlap */
+}
+
+.whyC9-icon img {
+  width: 140px;   /* larger than the circle */
+  height: auto;
+  position: absolute;   /* lets it poke out */
+  bottom: -10px;        /* adjust vertical escape */
+}
+
+
+.whyC9-heading {
+  color: var(--c9-navy);
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.why-logo {
+  max-width: 200px;
+  transform: translateY(15px);
+}
+
+.whyC9-text {
+  font-size: 0.95rem;
+  color: var(--c9-cream);
+  line-height: 1.5;
+}
+
+/* === SUCCESS STORY === */
+.whyC9-story {
+  background: var(--c9-cream);
+  border: 2px solid var(--c9-navy);
+  border-radius: 16px;
+  box-shadow: 4px 4px 0 var(--c9-navy);
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.whyC9-storyImage img {
+  max-width: 50%;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.whyC9-storyHeading {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--c9-pink);
+  margin-bottom: 0.5rem;
+}
+
+.whyC9-storyQuote {
+  font-style: italic;
+  color: var(--c9-navy);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.whyC9-owner {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: var(--c9-pink);
+}
+/* === REVIEW CTA === */
+.whyC9-review {
+  margin-bottom: 50px;
+}
+
+.whyC9-reviewText {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--c9-navy);
+}
+
+.whyC9-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.charity-read {
+  color: var(--c9-darkpurple);
+  font-weight: bolder;
+
+}
+
+.refill-read {
+  color: var(--c9-cream);
+  font-weight: bolder;
+
+}
+
+/* Base button style */
+.whyC9-btnReview,
+.whyC9-btnInsta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* space between icon + text */
+  padding: 12px 20px;
+  border-radius: 40px;
+  font-weight: 700;
+  box-shadow: 3px 3px 0 var(--c9-navy);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  font-size: 0.95rem;
+}
+
+/* Review button */
+.whyC9-btnReview {
+  background: var(--c9-pink);
+  color: #fff;
+}
+
+.whyC9-btnReview img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+
+/* Instagram button */
+.whyC9-btnInsta {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4); /* Insta gradient */
+  color: #fff;
+}
+
+.whyC9-btnInsta img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Hover effects */
+.whyC9-btnReview:hover,
+.whyC9-btnInsta:hover {
+  transform: scale(1.05);
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+  .whyC9-features {
+    flex-direction: column;
+
+  }
+  .whyC9-feature {
+    max-width: 100%;
+    text-align: center;
+  }
+  .whyC9-text {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+  .whyC9-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+}
 
 
 
@@ -4496,18 +4938,19 @@ body.productpage2 html.main-page {
   height: auto;             /* ⬅️ can grow with content */
   overflow: visible;        /* ⬅️ no clipping */
   z-index: 100;
+  background: linear-gradient(to bottom, var(--c9-cream), var(--c9-cream), #fc5b84);
+
 }
 
 /* === HEADER === */
 .ingredients-header h2 {
     color: var(--c9-pink); /* optional, use white text for contrast on pink */
-  font-size: clamp(1.9rem, 3.2vw, 3.6rem);
+  font-size: clamp(1.9rem, 4.2vw, 4.5rem);
   font-weight: 800;
   line-height: 1; /* 100% */
   letter-spacing: -2.8px;
   text-align: center;
-  margin: 0px auto 18px;
-  text-decoration: underline;
+  margin: 35px auto 18px;
   z-index: 101;
 }
 
@@ -4594,7 +5037,10 @@ body.productpage2 html.main-page {
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;  /* ✅ always start at top */
+  align-items: flex-start;      /* ✅ left align contents */
+  height: 100%;                 /* ✅ equalize height */
+  box-sizing: border-box;
   opacity: 0.95;
   box-sizing: border-box;
   min-width: unset;          /* ✅ Remove fixed 700px width */
@@ -4626,7 +5072,7 @@ body.productpage2 html.main-page {
 .ingredient-card.blue   { background-color: #5db0ff; }
 
 .ingredient-card h3 {
-  font-size: clamp(0.65rem, 2.5vw, 0.95rem);
+  font-size: clamp(0.45rem, 1.1vw, 0.95rem);
   font-weight: 700;
   margin-bottom: 0.15rem;
 
@@ -4644,14 +5090,43 @@ body.productpage2 html.main-page {
 
 }
 
+/*scroll bar*/
+/* === Horizontal Scrollbar Styling === */
+.ingredients-cards::-webkit-scrollbar {
+  height: 10px;   /* total scrollbar thickness */
+}
+
+.ingredients-cards::-webkit-scrollbar-track {
+  background: var(--c9-cream);  /* thin cream line */
+  border-radius: 50px;
+}
+
+.ingredients-cards::-webkit-scrollbar-thumb {
+  background: var(--c9-pink);   /* pill thumb */
+  border-radius: 50px;          /* makes it rounded */
+  min-width: 60px;              /* ensure pill is visible */
+}
+
+.ingredients-cards::-webkit-scrollbar-thumb:hover {
+  background: var(--c9-navy);   /* navy on hover */
+}
+
+/* Firefox support */
+.ingredients-cards {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c9-pink) var(--c9-cream);
+}
+
+
+
 @media screen and (max-width: 1380px) {
 
   /* Keep the entire section pinned at full height */
   .ingredients-section {
-    height: auto;
+    min-height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-start !important;
     position: relative;
     overflow: hidden;
   }
@@ -4662,8 +5137,6 @@ body.productpage2 html.main-page {
     display: flex;
     justify-content: flex-end; /* ✅ hard-right alignment */
     align-items: flex-start;
-
-    padding-right: 5%;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -4677,44 +5150,49 @@ body.productpage2 html.main-page {
 
 
   /* Make cards scroll internally & restrict height so ~4 cards show */
+  /* === Horizontal Swipe Carousel for mobile/tablet === */
   .ingredients-cards {
     display: flex;
+    flex-direction: row;         /* ✅ cards side by side */
+    gap: 1rem;                   /* space between cards */
+    overflow-x: auto;            /* enable horizontal scroll */
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* smooth momentum scrolling */
+    padding: 1rem;
+    margin-right: 0;
+  }
+
+  .ingredient-card {
+    flex: 0 0 80%;               /* ✅ each card takes ~80% of viewport */
+    max-width: 80%;
+    max-width: 320px;
+    scroll-snap-align: center;   /* ✅ snap cards neatly into view */
+    box-sizing: border-box; 
+    display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 90%;
-    height: 78vh; /* ✅ show only ~4 cards initially */
-    overflow-y: scroll;
-    padding-right: 12px;
-    scrollbar-width: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 280px;
   }
 
   .ingredients-cards::-webkit-scrollbar {
-    display: none;
+    display: none; /* ✅ hide scrollbar for cleaner look */
   }
 
-  /* Individual cards remain flexible */
-  .ingredient-card {
-    width: 100%;
-    padding: 1rem;
-    min-width: unset;
-    max-width: unset;
-    scroll-snap-align: start;
-  }
-
-  /* Cat stays fixed at bottom-left, independent of scrolling cards */
-  .floating-cat {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .floating-cat img {
-    width: clamp(420px, 38vw, 600px);
-    height: auto;
-    display: block;
-  }
+.floating-cat {
+  position: relative;      /* normal flow, not absolute */
+  order: 2;                /* ✅ pushes it AFTER the cards */
+  margin: 2rem auto 0;     /* ✅ some space above */
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+  
+.floating-cat img {
+  width: clamp(300px, 70vw, 500px);  /* ✅ responsive size */
+  height: auto;
+}
 }
 
 @media screen and (min-width: 1381px) {
@@ -4768,6 +5246,7 @@ body.productpage2 html.main-page {
   .cat-bullet-list li {
     font-size: clamp(0.8rem, 2.7vw, 0.1rem) !important;
   }
+  
 }
 
 
@@ -4785,12 +5264,16 @@ body.productpage2 html.main-page {
   margin: 0 1rem;
 }
 
+.feeding-guide {
+    background-color: #fc5b84;
+}
+
 /* Subheadings */
 .feeding-subheading {
   color: var(--c9-cream);
   font-size: 1.5rem;
   font-weight: 800;
-  margin: 2rem 0 1rem;
+  margin: 4rem 0 1rem;
   text-align: center;
   text-decoration: underline;
 }
@@ -4804,6 +5287,10 @@ body.productpage2 html.main-page {
   color: var(--c9-blue);
   font-weight: 600;
   font-size: clamp(0.8rem, 2.7vw, 1.1rem);
+}
+
+.feeding-bowl {
+  max-height: 200px;
 }
 
 /* Serving size cards */
@@ -4845,7 +5332,7 @@ body.productpage2 html.main-page {
 .serving-note {
   text-align: center;
   margin: 0.5rem auto 2rem;
-  font-size: clamp(0.75rem, 2.7vw, 1.1rem);
+  font-size: clamp(0.75rem, 2.7vw, 0.95rem);
   color: var(--c9-navy);
 }
 
@@ -4936,7 +5423,7 @@ body.productpage2 html.main-page {
 /* Video wrapper: leave animations as-is but center content */
 .cat-video-wrapper {
   position: relative;
-  background-color: #fc5b84;
+
 
   /* Truly full width, no gaps */
   width: 100vw;
@@ -5146,7 +5633,7 @@ body.productpage2 html.main-page {
 /* ---------- HIGHLIGHTS ---------- */
 .c9toy-highlights {
   padding: clamp(1.2rem, 3vw, 2rem) 0;
-  background: linear-gradient(180deg, var(--c9-cream) 0%, #fff 100%);
+  background: var(--c9-pink);
 }
 .c9toy-highlights .section-title { text-align: center; }
 
@@ -5175,10 +5662,35 @@ body.productpage2 html.main-page {
 
 /* ---------- HOW TO REFILL ---------- */
 .c9toy-how {
-  max-width: 900px;
   margin: 0 auto;
   padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem);
+  background: var(--c9-pink);
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
 }
+
+.c9toy-how-wrapper {
+  max-width: 900px;
+  margin: 0 auto;            /* centers the whole wrapper itself */
+  display: flex;
+  flex-direction: column;    /* stack items vertically */
+  align-items: center;       /* ✅ centers children horizontally */
+  text-align: center;        /* optional: center-align text as well */
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 4.2vw, 4.5rem);
+  margin-bottom: 2.5rem;
+  color: var(--c9-cream);
+}
+
+.chirpy-toy {
+  max-width: 250px; /* or clamp() for responsiveness */
+  height: auto;
+  margin-bottom: 2rem;
+}
+
 .c9toy-steps {
   counter-reset: step;
   margin: .4rem 0 0 0;
@@ -5188,7 +5700,7 @@ body.productpage2 html.main-page {
 .c9toy-steps li {
   counter-increment: step;
   position: relative;
-  background: #fff;
+  background: var(--c9-purple);
   border: 2px solid var(--c9-cream);
   border-radius: 12px;
   padding: .75rem .75rem .75rem 2.4rem;
@@ -5212,7 +5724,11 @@ body.productpage2 html.main-page {
 .c9toy-tip { color: var(--c9-navy); opacity: .85; margin-top: .25rem; }
 
 /* ---------- CARE & SPECS ---------- */
-.c9toy-care-specs { background: #fff; padding: clamp(1.2rem, 3vw, 2rem) 0; }
+.c9toy-care-specs { 
+  background: linear-gradient(to bottom, var(--c9-pink) 0%, var(--c9-purple) 100%);
+  padding: clamp(1.2rem, 3vw, 2rem) 0; 
+}
+
 .c9toy-care-specs__inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -5253,7 +5769,63 @@ body.productpage2 html.main-page {
 
 
 
+/*reviews on toy page*/
+.toy-reviews {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--c9-purple);
+}
 
+.toy-review-wrapper {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+
+
+.toy-review-card {
+  flex: 1 1 250px;
+  max-width: 280px;
+  background: #fffbea;
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--c9-navy);
+  padding: 1rem;
+}
+
+.toy-review-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+
+.toy-review-caption {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--c9-navy);
+}
+
+.toy-review-cta {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.toy-review-cta p {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.purple-to-cream {
+  background:linear-gradient( to bottom, var(--c9-purple) 0%, var(--c9-cream) 25%, var(--c9-cream) 75%, var(--c9-cream) 100%) !important;
+  
+}
+
+.purple-to-cream h2 {
+  margin-top: 35px !important;
+  color: var(--c9-navy) !important;
+}
 
 
 
@@ -5301,19 +5873,30 @@ body.productpage2 html.main-page {
 }
 
 /* put header + visuals inside the first two rows */
+/* Replace your current .hero-inner grid definition with this: */
 .hero-inner{
   position: relative;
-  z-index: 1;                     /* above the decorative bar */
+  z-index: 1;
   display: grid;
-  grid-template-columns: minmax(420px, 1fr) minmax(480px, 1fr); /* left | right */
-  grid-template-rows: auto 1fr;  /* header row, then content row */
-  row-gap: clamp(12px, 2vw, 24px); /* controls spacing between header and buttons */
+  grid-template-columns: minmax(420px, 1fr) minmax(480px, 1fr);
+  grid-template-rows: auto 1fr;
+  /* 👇 make the layout explicit: */
+  grid-template-areas:
+    "head  right"
+    "cards right";
+  column-gap: clamp(12px, 2.2vw, 36px);
+  row-gap: clamp(12px, 2vw, 24px);
   align-content: start;
-  min-height: 0;
-  padding-bottom: var(--heroBarH); /* reserve space for the pink strip */
+  padding-bottom: var(--heroBarH);
   min-height: calc(100svh - var(--header-height));
   box-sizing: border-box;
 }
+
+/* Put each piece in its named area */
+.header-hero  { grid-area: head; }
+.hero-products{ grid-area: cards; align-self: end; }
+.hero-right   { grid-area: right; }
+
 
 
 /* Desktop tighten-up: bring the cat closer to the copy */
@@ -5393,21 +5976,12 @@ body.productpage2 html.main-page {
 }
 
 /* CAT: sits on baseline; now on the RIGHT; pulled inward & can be larger */
-.hero-cat{
+.hero-cat {
+  justify-self: end;
   align-self: end;
-  order: 2;                 /* right column */
-  justify-self: end;        /* hug the right edge of its column */
-  margin-right: clamp(24px, 5vw, 120px); /* pull inward from far-right */
+  z-index: 2;               /* above jar */
 }
-.hero-cat img{
-  width: 100%;
-  height: auto;
-  max-height: clamp(400px, 69vh, 920px);
-  object-fit: contain;
-  display: block;
-  transform: translateY(clamp(45px, 3vw, 20px));
-  margin-right: 400px;
-}
+
 
 @media (min-width: 950px) {
   .hero-cat img { transform: translateY(25px); }
@@ -5419,7 +5993,7 @@ body.productpage2 html.main-page {
   order: 1;                 /* left column */
   justify-self: start;      /* hug the left edge of its column */
   width: 80%;
-  max-width: 480px;
+  max-width: 525px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -5466,11 +6040,10 @@ body.productpage2 html.main-page {
   gap: 14px;
   align-items: center;
   padding: 14px;
-  border: 2px solid #2F3655;
   border-radius: 18px;
   text-decoration: none;
   color: var(--c9-cream);
-  box-shadow: 0 10px 26px rgba(35,50,74,.10);
+  box-shadow: 0 10px 12px rgba(96, 56, 75, 0.43);
 }
 
 /* Primary/secondary surfaces (keep subtle so they don’t fight the hero) */
@@ -5501,12 +6074,12 @@ body.productpage2 html.main-page {
 .hero-card__body h3{
   margin: 0 0 4px 0;
   font-weight: 900;
-  font-size: clamp(1rem, 1.05rem + .2vw, 1.18rem);
+  font-size: clamp(0.95rem, 1.05rem + .2vw, 1.18rem);
   line-height: 1.1;
 }
 .hero-card__body p{
   margin: 0;
-  font-size: .95rem;
+  font-size: clamp(1rem, 1.1vw, 1.25rem);
   line-height: 1.25;
   opacity: .9;
 }
@@ -5522,7 +6095,7 @@ body.productpage2 html.main-page {
 .hero-cards{
   display: grid;
   gap: 14px;
-  min-width: 430px;
+  min-width: 525px;
 }
 
 
@@ -5699,10 +6272,7 @@ hero button colours
 }
 
 /*DIFFERENT CAT IMAGE ON MEDIUM SCREEN*/
-/* Default (desktop + small mobile) */
-.hero-cat img {
-  content: url("assets/cat-toy-play.png");
-}
+
 
 /* Between 680px and 980px → swap image */
 @media (min-width: 680px) and (max-width: 980px) {
@@ -5776,7 +6346,7 @@ hero button colours
   .head-subtext{ 
     margin: 20px 0px 0px 27px;
     max-width: 83%;
-    font-size: clamp(0.91rem, 1.1vw, 1.25rem) 
+    font-size: clamp(1.1rem, 1.1vw, 1.25rem) 
   }
 }
 
@@ -5852,6 +6422,256 @@ hero button colours
   padding: 0% 5%;
 }
 }
+
+
+
+/* -----------------------------
+   HERO: “Purr-poseful” pill tag
+------------------------------*/
+.header-hero { position: relative; }
+.hero-pill{
+  position: absolute;
+  top: clamp(-6px, -0.8vw, -2px);
+  left: clamp(220px, 28vw, 320px);   /* nudge where you like */
+  display: inline-grid;
+  place-items: center;
+  text-align: center;
+  font-weight: 900;
+  line-height: 1.05;
+  font-size: clamp(.8rem, .9rem + .2vw, 1rem);
+  padding: .5rem .75rem;
+  border-radius: 999px;
+  color: #2F3655;
+  background: #EAE7FF;               /* soft purple bubble */
+  border: 2px solid #2F3655;
+  box-shadow: 0 10px 20px rgba(47,54,85,.12);
+  transform: rotate(-8deg);
+  z-index: 3;
+}
+
+/* -----------------------------------
+   HERO OVERLAYS (values + charity)
+   Positioned inside the right column
+------------------------------------*/
+.hero-visuals { position: relative; } /* create positioning context */
+
+.hero-overlays{
+  position: absolute;
+  right: clamp(24px, 6vw, 120px);
+  top: clamp(120px, 18vh, 240px);
+  width: min(420px, 38vw);
+  z-index: 3;  /* above cat */
+  display: grid;
+  gap: clamp(14px, 2vw, 18px);
+}
+
+
+/* Value list */
+.hero-values{
+  margin: 0;
+  padding: clamp(10px, 1.6vw, 14px) clamp(12px, 2vw, 16px);
+  list-style: none;
+  background: #fff;
+  border: 2px solid #2F3655;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(35,50,74,.10);
+}
+.hero-values li{
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  color: #2F3655;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px dashed rgba(47,54,85,.18);
+}
+.hero-values li:last-child{ border-bottom: none; }
+
+/* Simple emoji icons as a placeholder (swap for SVG when you want) */
+.hero-values li::before{
+  content: "•";
+  display: grid;
+  place-items: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #F7E5D6;
+  border: 2px solid #2F3655;
+  font-size: 0; /* hide bullet if fonts fail */
+}
+.hero-values .is-paw::before   { content: "🐾"; font-size: 16px; }
+.hero-values .is-leaf::before  { content: "🌿"; font-size: 16px; }
+.hero-values .is-heart::before { content: "❤️"; font-size: 15px; }
+
+/* Base styles reused from your existing hero-charity */
+.hero-charity{
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 2px solid #2F3655;
+  border-radius: 14px;
+  padding: 10px 12px;
+  box-shadow: 0 16px 36px rgba(35,50,74,.12);
+  color: #2F3655;
+}
+.hero-charity .hc-icon{
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 10px;
+  background: #EAE7FF;
+  border: 2px solid #2F3655;
+  font-size: 18px;
+}
+.hero-charity .hc-copy{ display: grid; gap: 2px; }
+.hero-charity .hc-copy strong{ font-weight: 900; }
+.hero-charity .hc-copy span{ color:#3b4d6a; }
+
+/* --------- FIXED TAB BEHAVIOUR ---------- */
+.hero-charity.is-tab{
+  position: fixed;
+  right: 0;
+  top: clamp(280px, 36vh, 420px);    /* vertical position */
+  width: min(380px, 92vw);
+  border-radius: 12px 0 0 12px;      /* tab edge on the left */
+  z-index: 50;
+  /* start mostly hidden: only ~56px shows (icon area) */
+  transform: translateX(calc(100% - 56px));
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+
+/* Slide out on hover/focus/tap */
+.hero-charity.is-tab:hover,
+.hero-charity.is-tab:focus-within{
+  transform: translateX(0);
+  box-shadow: 0 24px 56px rgba(35,50,74,.18);
+}
+
+/* Mobile: make it full-width stacked in the flow (no fixed tab) */
+@media (max-width: 980px){
+  .hero-charity.is-tab{
+    position: static;
+    transform: none;
+    width: 100%;
+    border-radius: 12px;
+    margin: 10px 24px 0;
+  }
+}
+
+
+
+/* JAR sits in the right column, left edge of the cat area */
+.hero-visuals { position: relative; }
+
+
+
+/* Tablet: bring jar a bit closer to the cat */
+@media (max-width: 1220px){
+  .hero-jar{ right: clamp(220px, 22vw, 320px); }
+}
+
+/* Under 980 (single column): jar should sit above the pink bar and center */
+@media (max-width: 980px){
+  .hero-jar{
+    position: static;
+    display: block;
+    margin: 8px auto 6px;
+    height: clamp(90px, 18vh, 160px);
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,.18));
+  }
+}
+/* The hero grid already defines 2 columns; this assigns the wrapper to the right one */
+/* Remove any earlier .hero-right rules and use this */
+.hero-right{
+  position: relative;       /* local abs. positioning for jar/overlays */
+  display: grid;
+  align-items: end;         /* cat sits at the bottom of the column */
+}
+
+/* Cat sits bottom-right inside hero-right */
+.hero-cat{
+  justify-self: end;
+  align-self: end;
+  z-index: 2;               /* above jar */
+}
+.hero-cat img{
+  height: clamp(420px, 69vh, 920px);
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transform: scaleX(-1);
+  /* 🔴 Delete any old margin-right / big translateY rules on the cat */
+}
+
+
+/* Jar pins to the LEFT edge of the right column (i.e., next to the gap),
+   and sits on the pink bar */
+.hero-jar{
+  position: absolute;
+  left: 0;                                   /* left edge of right column */
+  bottom: calc(var(--heroBarH) + 10px);      /* sits on the pink strip */
+  height: clamp(120px, 20vh, 220px);
+  width: auto;
+  z-index: 1;                                /* behind cat */
+  filter: drop-shadow(0 18px 36px rgba(0,0,0,.22));
+  pointer-events: none;
+}
+/* Value stack can still float near the cat; adjust if needed */
+.hero-values{
+  position: absolute;
+  right: clamp(8px, 2.2vw, 28px);
+  top: clamp(80px, 12vh, 160px);
+  z-index: 3;
+}
+
+/* Tablet/phone: stack and center; jar becomes inline */
+@media (max-width: 980px){
+  .hero-right{ position: static; }
+  .hero-jar{
+    position: static;
+    display: block;
+    margin: 8px auto 6px;
+    height: clamp(90px, 18vh, 160px);
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,.18));
+  }
+  .hero-values{
+    position: static;
+    margin: 8px 24px 0;
+  }
+}
+
+
+/* -----------------------------------
+   Responsive behavior
+   ≤ 980px: overlays stack under headline
+------------------------------------*/
+@media (max-width: 980px){
+  .hero-pill{
+    position: static;
+    transform: none;
+    margin: 6px 0 0 0;
+  }
+
+  .hero-overlays{
+    position: static;       /* leave the right column and flow under header */
+    width: 100%;
+    margin: 12px 0 10px;
+    padding: 0 24px;
+  }
+  .hero-values, .hero-charity{
+    border-radius: 12px;
+  }
+}
+
+/* tiny phones: a touch more breathing room */
+@media (max-width: 420px){
+  .hero-overlays{ padding: 0 16px; }
+}
+
+
+
 
 /*ABOUT US*/
 :root {
@@ -6145,7 +6965,7 @@ hero button colours
 }
 
 .cta-more {
-  font-size: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(2.3rem, 6vw, 4rem);
   color: var(--c9-navy);
   margin-bottom: 10px;
   font-weight: 800;
@@ -6322,7 +7142,7 @@ hero button colours
   }
 
   .cards-grid .more-card h3 {
-    font-size: clamp(1.5rem, 5vw, 4rem); /* scales up with screen */
+    font-size: clamp(2rem, 5vw, 4rem); /* scales up with screen */
     margin: 0;
     text-align: center;
   }
@@ -6364,7 +7184,7 @@ hero button colours
 .best-sellers h2{
   margin: 10px 0 24px;
   color: var(--c9-cream);
-  font-size: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(2.3rem, 6vw, 4rem);
   font-weight: 800;
   line-height: 1;
   letter-spacing: -2.8px;
@@ -6374,6 +7194,12 @@ hero button colours
 .best-seller-label{
   font-size: 1rem;
   margin-top: .5rem;
+  color: var(--c9-navy);
+  text-decoration: none;
+}
+
+a.carousel-item {
+  text-decoration: none;
 }
 
 /* -------- Viewport (clips) -------- */
@@ -6454,7 +7280,7 @@ hero button colours
 
 /* --- ≤ 1170px: 3-up, scale jars down, tighten spacing --- */
 @media (max-width: 1170px){
-  .best-sellers{ padding: 4.75rem 1rem; }
+  .best-sellers{ padding: 4.75rem 1rem 0rem 1rem; }
   .best-sellers h2{ margin: 8px 0 18px; }
 
   .carousel-wrapper{ padding: 0 2rem; }
@@ -6660,7 +7486,6 @@ hero button colours
 .shop-cards .hero-products{
   margin: 30px 0px 0px 0px;
   align-self: center;
-  justify-content: center;
   width: 100%;
   display: grid !important;
 }
@@ -6668,6 +7493,9 @@ hero button colours
 /* Responsive height tweak (optional) */
 @media (max-width: 700px){
   .shop-card{ height: 180px; }
+
+
+  
 }
 
 
@@ -6727,7 +7555,7 @@ hero button colours
     grid-area: head;
     margin: 0 auto;
     text-align: center;
-    font-size: clamp(2rem, 6vw, 4rem);  /* ↑ minimum size */
+    font-size: clamp(2.3rem, 6vw, 4rem);  /* ↑ minimum size */
     line-height: 1.05;
   }
   .accessories-subheader{
@@ -6784,6 +7612,10 @@ hero button colours
   .shop-card span{
     font-size: clamp(1rem, 3.2vw, 1.15rem);  /* ↑ minimum so label doesn’t go tiny */
   }
+
+  .shop-cards .hero-products {
+    justify-content: center;
+  }
 }
 
 /* ====== EXTRA SMALL TWEAKS (≤600px) ====== */
@@ -6829,7 +7661,7 @@ hero button colours
   display: flex;
   margin: 10px 0 24px;
   color: var(--c9-cream);
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: clamp(2.3rem, 6vw, 3.5rem);
   font-weight: 800;
   line-height: 1;
   letter-spacing: -2.8px;

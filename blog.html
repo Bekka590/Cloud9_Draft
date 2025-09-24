@@ -55,13 +55,30 @@
 <main class="blog-page">
 
 
- <section class="shop-header">
+
+      <section class="shop-header blue-header">
       <div class="shop-heading-wrapper">
         <h1 class="shop-heading">Cloud9 Articles</h1>
+        <p class="shop-subheading">
+          Cat health articles, behaviour training tips, nutrition guides,
+          and real customer success stories—showcasing how Cloud9
+          supplements have helped cats live healthier, happier lives.
+        </p>
         <img src="assets/cat-reading.png" alt="Jumping cat" class="shop-heading-cat" />
     </div>
 
     </section>
+    
+<div class="wave-separator">
+  <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+    
+<path fill="#a9d8f6" fill-opacity="1" d="M0,160L24,176C48,192,96,224,144,234.7C192,245,240,235,288,208C336,181,384,139,432,112C480,85,528,75,576,90.7C624,107,672,149,720,149.3C768,149,816,107,864,122.7C912,139,960,213,1008,229.3C1056,245,1104,203,1152,176C1200,149,1248,139,1296,138.7C1344,139,1392,149,1416,154.7L1440,160L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path>
+
+</svg>
+</div>
+
+
+
 <!-- Blog & Success Stories Section -->
 <section class="product-section benefits-tabs" id="blog-section">
   <div class="tab-border-wrapper">
@@ -69,9 +86,8 @@
 
       <!-- LEFT SIDE: Navigation Tabs -->
       <div class="vertical-tabs">
-        <div><br><br></div>
-        <button class="tab-btn active" data-tab="stories">Success Stories</button>
-        <button class="tab-btn" data-tab="blog">Blog Articles</button>
+        <button class="wave-button tab-btn active" data-tab="stories">Success Stories</button>
+        <button class="wave-button tab-btn" data-tab="blog">Blog Articles</button>
       </div>
 
       <!-- RIGHT SIDE: Content -->
@@ -93,7 +109,7 @@
                 <div class="blog-card">
                   <img src="assets/blogcat2.jpg" alt="Training anxious cat" class="blog-thumb">
                   <div class="blog-info">
-                    <h3><a href="/blog/anxious-stressed-cat2.html">Training Anxiety Out of Your Cat</a></h3>
+                    <h3><a href="blog/anxious-stressed-cat2.html">Training Anxiety Out of Your Cat</a></h3>
                     <p>Learn step-by-step techniques to help even the most nervous cats feel safe and confident in their home.</p>
                   </div>
                 </div>
@@ -101,7 +117,7 @@
                 <div class="blog-card">
                   <img src="assets/blogcat2.jpg" alt="Hydration tips" class="blog-thumb">
                   <div class="blog-info">
-                    <h3><a href="/blog/cat-hydration-tips">How to Keep Your Cat Hydrated</a></h3>
+                    <h3><a href="blog/cat-hydration-tips">How to Keep Your Cat Hydrated</a></h3>
                     <p>From water fountains to tasty toppers—our best tips to ensure your cat drinks enough every day.</p>
                   </div>
                 </div>
@@ -109,14 +125,14 @@
                 <div class="blog-card">
                   <img src="assets/blogcat2.jpg" alt="Natural supplements" class="blog-thumb">
                   <div class="blog-info">
-                    <h3><a href="/blog/benefits-of-natural-supplements">Benefits of Natural Supplements</a></h3>
+                    <h3><a href="blog/benefits-of-natural-supplements">Benefits of Natural Supplements</a></h3>
                     <p>Discover how herbs and amino acids like Ashwagandha and L-Theanine can naturally support feline wellness.</p>
                   </div>
                 </div>
                 <div class="blog-card">
                   <img src="assets/blogcat2.jpg" alt="Natural supplements" class="blog-thumb">
                   <div class="blog-info">
-                    <h3><a href="/blog/benefits-of-natural-supplements">Benefits of Natural Supplements</a></h3>
+                    <h3><a href="blog/benefits-of-natural-supplements">Benefits of Natural Supplements</a></h3>
                     <p>Discover how herbs and amino acids like Ashwagandha and L-Theanine can naturally support feline wellness.</p>
                   </div>
                 </div>
@@ -129,69 +145,200 @@
         </div>
 
         <!-- SUCCESS STORIES TAB -->
-        <div class="tab-content active" id="stories">
-          <h2 class="tab-heading">Heartwarming Success Stories</h2>
-          <div class="tab-flex">
+<!-- SUCCESS STORIES TAB -->
+<div class="tab-content active" id="stories">
+  <h2 class="tab-heading">Heartwarming Success Stories</h2>
+  <div class="tab-flex">
 
-            <div class="tab-text">
-              <p class="intro-text">
-                See how our products have transformed the lives of cats and their owners. From timid rescues to playful companions, 
-                these real stories showcase the power of care and consistency.
-              </p>
+    <div class="tab-text">
+      <p class="intro-text">
+        See how our products have transformed the lives of cats and their owners. From timid rescues to playful companions, 
+        these real stories showcase the power of care and consistency.
+      </p>
 
-              <!-- Success Story List -->
-              <div class="blog-list">
+      <!-- Success Story List -->
+      <div class="blog-list">
 
-                    <div class="blog-card featured-story">
-                    <div class="star-container">
-                        <!-- Stars will be auto-generated with CSS -->
-                    </div>
-                    <img src="assets/blogcat2.jpg" alt="Fang the cat" class="blog-thumb">
-                    <div class="blog-info">
-                        <h3><a href="/stories/Fang1.html">Story of the Month: Fang’s Journey</a></h3>
-                        <p>Fang went from hiding under the bed to ruling the house in just 4 weeks with our calming formula and patient care.</p>
-                    </div>
-                    </div>
+          <!-- Story Card -->
+      <div class="story-card">
+        <!-- Collapsed summary -->
+        <div class="story-main">
+          <img src="assets/blogcat2.jpg" alt="Fang the cat" class="story-thumb">
+          <div class="story-info">
+            <h3>Story of the Month: Fang’s Journey</h3>
+            <p>Fang went from hiding under the bed to ruling the house in just 4 weeks...</p>
+          </div>
+        </div>
 
-
-
-
-
-                <div class="blog-card">
-                  <img src="assets/blogcat2.jpg" alt="Luna the cat" class="blog-thumb">
-                  <div class="blog-info">
-                    <h3><a href="/success/lunas-confidence-boost">Luna’s Confidence Boost</a></h3>
-                    <p>Once scared of every sound, Luna now greets visitors and plays daily thanks to our supplements and training tips.</p>
-                  </div>
-                </div>
-                
-                <div class="blog-card">
-                  <img src="assets/blogcat2.jpg" alt="Luna the cat" class="blog-thumb">
-                  <div class="blog-info">
-                    <h3><a href="/success/lunas-confidence-boost">Luna’s Confidence Boost</a></h3>
-                    <p>Once scared of every sound, Luna now greets visitors and plays daily thanks to our supplements and training tips.</p>
-                  </div>
-                </div>
-                
-                <div class="blog-card">
-                  <img src="assets/blogcat2.jpg" alt="Luna the cat" class="blog-thumb">
-                  <div class="blog-info">
-                    <h3><a href="/success/lunas-confidence-boost">Luna’s Confidence Boost</a></h3>
-                    <p>Once scared of every sound, Luna now greets visitors and plays daily thanks to our supplements and training tips.</p>
-                  </div>
-                </div>
-                <div><br><br></div>
-              </div>
+        <!-- Hidden expanded content -->
+        <div class="story-expanded">
+          <div class="story-expanded-inner">
+            <div class="story-jar">
+              <img src="assets/cloud9-jar-vector.png" alt="Cloud9 Supplement Jar">
             </div>
-
-            <!-- Optional Image -->
-
+            <div class="story-details">
+              <blockquote>
+                “With the help of Cloud9’s calming formula and patient care, Fang slowly grew confident…”
+              </blockquote>
+              <p>
+                Fang’s owners tell us they’ve seen a complete transformation in just a few weeks —
+                from a shy, nervous cat hiding under the bed to a happy, relaxed companion.
+              </p>
+              <a href="/products/stress-anxiety-cat-supplement.html" class="story-cta">
+                Discover the formula that helped Fang
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
+
+
+
+                <!-- Story Card -->
+      <div class="story-card">
+        <!-- Collapsed summary -->
+        <div class="story-main">
+          <img src="assets/blogcat2.jpg" alt="Fang the cat" class="story-thumb">
+          <div class="story-info">
+            <h3>Story of the Month: Fang’s Journey</h3>
+            <p>Fang went from hiding under the bed to ruling the house in just 4 weeks...</p>
+          </div>
+        </div>
+
+        <!-- Hidden expanded content -->
+        <div class="story-expanded">
+          <div class="story-expanded-inner">
+            <div class="story-jar">
+              <img src="assets/cloud9-jar-vector.png" alt="Cloud9 Supplement Jar">
+            </div>
+            <div class="story-details">
+              <blockquote>
+                “With the help of Cloud9’s calming formula and patient care, Fang slowly grew confident…”
+              </blockquote>
+              <p>
+                Fang’s owners tell us they’ve seen a complete transformation in just a few weeks —
+                from a shy, nervous cat hiding under the bed to a happy, relaxed companion.
+              </p>
+              <a href="/products/stress-anxiety-cat-supplement.html" class="story-cta">
+                Discover the formula that helped Fang
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+                <!-- Story Card -->
+      <div class="story-card">
+        <!-- Collapsed summary -->
+        <div class="story-main">
+          <img src="assets/blogcat2.jpg" alt="Fang the cat" class="story-thumb">
+          <div class="story-info">
+            <h3>Story of the Month: Fang’s Journey</h3>
+            <p>Fang went from hiding under the bed to ruling the house in just 4 weeks...</p>
+          </div>
+        </div>
+
+        <!-- Hidden expanded content -->
+        <div class="story-expanded">
+          <div class="story-expanded-inner">
+            <div class="story-jar">
+              <img src="assets/cloud9-jar-vector.png" alt="Cloud9 Supplement Jar">
+            </div>
+            <div class="story-details">
+              <blockquote>
+                “With the help of Cloud9’s calming formula and patient care, Fang slowly grew confident…”
+              </blockquote>
+              <p>
+                Fang’s owners tell us they’ve seen a complete transformation in just a few weeks —
+                from a shy, nervous cat hiding under the bed to a happy, relaxed companion.
+              </p>
+              <a href="/products/stress-anxiety-cat-supplement.html" class="story-cta">
+                Discover the formula that helped Fang
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+                <!-- Story Card -->
+      <div class="story-card">
+        <!-- Collapsed summary -->
+        <div class="story-main">
+          <img src="assets/blogcat2.jpg" alt="Fang the cat" class="story-thumb">
+          <div class="story-info">
+            <h3>Story of the Month: Fang’s Journey</h3>
+            <p>Fang went from hiding under the bed to ruling the house in just 4 weeks...</p>
+          </div>
+        </div>
+
+        <!-- Hidden expanded content -->
+        <div class="story-expanded">
+          <div class="story-expanded-inner">
+            <div class="story-jar">
+              <img src="assets/cloud9-jar-vector.png" alt="Cloud9 Supplement Jar">
+            </div>
+            <div class="story-details">
+              <blockquote>
+                “With the help of Cloud9’s calming formula and patient care, Fang slowly grew confident…”
+              </blockquote>
+              <p>
+                Fang’s owners tell us they’ve seen a complete transformation in just a few weeks —
+                from a shy, nervous cat hiding under the bed to a happy, relaxed companion.
+              </p>
+              <a href="/products/stress-anxiety-cat-supplement.html" class="story-cta">
+                Discover the formula that helped Fang
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+                <!-- Story Card -->
+      <div class="story-card">
+        <!-- Collapsed summary -->
+        <div class="story-main">
+          <img src="assets/blogcat2.jpg" alt="Fang the cat" class="story-thumb">
+          <div class="story-info">
+            <h3>Story of the Month: Fang’s Journey</h3>
+            <p>Fang went from hiding under the bed to ruling the house in just 4 weeks...</p>
+          </div>
+        </div>
+
+        <!-- Hidden expanded content -->
+        <div class="story-expanded">
+          <div class="story-expanded-inner">
+            <div class="story-jar">
+              <img src="assets/cloud9-jar-vector.png" alt="Cloud9 Supplement Jar">
+            </div>
+            <div class="story-details">
+              <blockquote>
+                “With the help of Cloud9’s calming formula and patient care, Fang slowly grew confident…”
+              </blockquote>
+              <p>
+                Fang’s owners tell us they’ve seen a complete transformation in just a few weeks —
+                from a shy, nervous cat hiding under the bed to a happy, relaxed companion.
+              </p>
+              <a href="/products/stress-anxiety-cat-supplement.html" class="story-cta">
+                Discover the formula that helped Fang
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+      <br><br><br></div>
+
+      </div>
+
+
+
+
+      </div>
     </div>
   </div>
-</section>
+</div>
+
 
 <!-- Success Stories Footer CTA -->
 <div class="success-stories">
@@ -205,8 +352,17 @@
       <h2>We Want to Hear Your Success Stories!</h2>
       <p>Have any of the Cloud9's formulas or accessories helped your cat feel happier, healthier, or more relaxed?</p>
       <p>Send us a photo and a review — your cat could feature on our site and socials!</p>
-      <a href="mailto:hello@cloud9feline.com" class="success-btn">Share Your Story</a>
-    </div>
+        <div class="whyC9-buttons">
+          <a href="#" class="whyC9-btnReview">
+            <img src="../assets/star.svg" alt="Star">
+            Leave a Review
+          </a>
+          <a href="https://instagram.com/cloud9.feline" class="whyC9-btnInsta">
+            <img src="../assets/instagram-icon.svg" alt="Instagram">
+            Visit our Insta
+          </a>
+        </div>    
+      </div>
     <div class="success-image">
       <img src="assets/blogcat2.jpg" alt="Happy cat success story">
       <p class="image-caption">Feature your cat!</p>
@@ -214,7 +370,7 @@
   </div>
 </div>
 
-<section class="best-sellers">
+<section id="blog" class="best-sellers">
   <h2>Best Sellers</h2>
   <div class="carousel-wrapper">
     <button class="carousel-arrow left">&#10094;</button>
@@ -397,6 +553,31 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 
+<!-- SUCCESS STORIES EXPAND -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const storyCards = document.querySelectorAll(".story-card");
+
+  storyCards.forEach(card => {
+    card.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      // Close all other cards first
+      storyCards.forEach(c => {
+        if (c !== card) c.classList.remove("active");
+      });
+
+      // Toggle clicked card
+      card.classList.toggle("active");
+    });
+  });
+
+  // Collapse if clicking outside
+  document.addEventListener("click", () => {
+    storyCards.forEach(c => c.classList.remove("active"));
+  });
+});
+</script>
 
 
 
@@ -438,6 +619,85 @@ star.style.background = colors[Math.floor(Math.random() * colors.length)];
 </script>
 
 
+
+
+<!--Carousel script-->
+
+<script>
+(() => {
+  const track      = document.querySelector(".carousel-track");
+  const leftArrow  = document.querySelector(".carousel-arrow.left");
+  const rightArrow = document.querySelector(".carousel-arrow.right");
+
+  if (!track) return;
+
+  let itemWidth = 0;
+  let animating = false;
+
+  // Measure actual stride (item width + margins)
+  function measure() {
+    const first = track.querySelector(".carousel-item");
+    if (!first) return;
+    const cs = getComputedStyle(first);
+    const ml = parseFloat(cs.marginLeft)  || 0;
+    const mr = parseFloat(cs.marginRight) || 0;
+    itemWidth = first.getBoundingClientRect().width + ml + mr;
+  }
+
+  function next() {
+    if (animating || !itemWidth) return;
+    animating = true;
+    track.style.transition = "transform 300ms ease";
+    track.style.transform = `translateX(-${itemWidth}px)`;
+    const onEnd = () => {
+      track.removeEventListener("transitionend", onEnd);
+      track.style.transition = "none";
+      track.appendChild(track.firstElementChild);
+      track.style.transform = "translateX(0)";
+      void track.offsetHeight;
+      track.style.transition = "";
+      animating = false;
+    };
+    track.addEventListener("transitionend", onEnd);
+  }
+
+  function prev() {
+    if (animating || !itemWidth) return;
+    animating = true;
+    track.style.transition = "none";
+    track.insertBefore(track.lastElementChild, track.firstElementChild);
+    track.style.transform = `translateX(-${itemWidth}px)`;
+    void track.offsetHeight;
+    track.style.transition = "transform 300ms ease";
+    track.style.transform = "translateX(0)";
+    const onEnd = () => {
+      track.removeEventListener("transitionend", onEnd);
+      track.style.transition = "";
+      animating = false;
+    };
+    track.addEventListener("transitionend", onEnd);
+  }
+
+  rightArrow?.addEventListener("click", next);
+  leftArrow?.addEventListener("click", prev);
+
+  let startX = 0;
+  track.addEventListener("touchstart", e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener("touchend", e => {
+    const delta = e.changedTouches[0].clientX - startX;
+    const threshold = 40;
+    if (delta <= -threshold) next();
+    else if (delta >= threshold) prev();
+  }, { passive: true });
+
+  const ro = new ResizeObserver(() => measure());
+  ro.observe(track);
+
+  window.addEventListener("load", measure);
+  window.addEventListener("resize", measure);
+  measure();
+})();
+</script>
 
 </body>
 
